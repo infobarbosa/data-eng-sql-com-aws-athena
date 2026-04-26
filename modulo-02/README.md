@@ -115,7 +115,7 @@ CREATE EXTERNAL TABLE IF NOT EXISTS db_analytics.pedidos (
     PRODUTO        STRING,
     VALOR_UNITARIO DOUBLE,
     QUANTIDADE     INT,
-    DATA_CRIACAO   STRING,
+    DATA_CRIACAO   TIMESTAMP,
     UF             STRING,
     ID_CLIENTE     STRING
 )
@@ -158,7 +158,7 @@ O dataset de pagamentos está em formato JSON compactado. O campo `avaliacao_fra
 | `forma_pagamento` | STRING | Modalidade de pagamento |
 | `valor_pagamento` | DOUBLE | Valor total processado |
 | `status` | BOOLEAN | Indica se o pagamento foi aprovado |
-| `data_processamento` | STRING | Data e hora do processamento |
+| `data_processamento` | TIMESTAMP | Data e hora do processamento |
 | `avaliacao_fraude` | STRUCT | Resultado da avaliação de risco |
 | `avaliacao_fraude.fraude` | BOOLEAN | Indica detecção de fraude |
 | `avaliacao_fraude.score` | DOUBLE | Score de risco (0.0 a 1.0) |
@@ -171,7 +171,7 @@ CREATE EXTERNAL TABLE IF NOT EXISTS db_analytics.pagamentos (
     forma_pagamento    STRING,
     valor_pagamento    DOUBLE,
     status             BOOLEAN,
-    data_processamento STRING,
+    data_processamento TIMESTAMP,
     avaliacao_fraude   STRUCT<
         fraude : BOOLEAN,
         score  : DOUBLE
