@@ -60,6 +60,69 @@ Um **objeto** no S3 é qualquer arquivo armazenado, identificado por uma chave �
 
 A compactação com `gzip` reduz o volume de dados armazenados e escaneados pelo Athena, com impacto direto no custo por consulta.
 
+### 3.3. Disponibilização dos datasets
+
+1. Crie um bucket S3:
+```sh
+bucket_name=s3://data-eng-$(date +%Y-%m-%d-%H-%M)
+echo $bucket_name 
+aws s3 mb $bucket_name
+
+```
+
+2. Faça o clone do dataset de clientes:
+
+```sh
+git clone https://github.com/infobarbosa/dataset-json-clientes
+
+```
+
+3. Faça o upload dos arquivos para o bucket S3:
+
+```sh
+aws s3 cp dataset-json-clientes/data $bucket_name/clientes/ --recursive
+
+```
+
+4. Verifique o upload dos arquivos no bucket S3:
+
+```sh
+aws s3 ls $bucket_name/clientes/
+
+```
+
+5. Faça o download do dataset de pedidos:
+
+```sh
+git clone https://github.com/infobarbosa/datasets-csv-pedidos
+
+```
+
+6. Faça o upload dos arquivos para o bucket S3:
+
+```sh
+aws s3 cp datasets-csv-pedidos/data/pedidos/ $bucket_name/pedidos/ --recursive
+
+aws s3 ls $bucket_name/pedidos/ --recursive
+
+```
+
+7. Faça o download do dataset de pagamentos:
+
+```sh
+git clone https://github.com/infobarbosa/dataset-json-pagamentos
+
+```
+
+8. Faça o upload dos arquivos para o bucket S3:
+
+```sh
+aws s3 cp dataset-json-pagamentos/data/pagamentos/ $bucket_name/pagamentos/ --recursive
+
+aws s3 ls $bucket_name/pagamentos/ --recursive
+
+```
+
 ---
 
 ## 4. Amazon Athena
