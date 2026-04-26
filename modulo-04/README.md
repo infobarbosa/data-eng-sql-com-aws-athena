@@ -18,14 +18,15 @@ Os três datasets do curso possuem relacionamentos definidos por chaves de negó
 
 ```
 clientes
-  └── id  ──────────────────────────────┐
-                                         │ ID_CLIENTE (FK)
-pedidos                                  │
-  ├── ID_PEDIDO  ─────────────────────┐ ◀┘
-  └── ID_CLIENTE (FK → clientes.id)   │
-                                       │ id_pedido (FK)
-pagamentos                             │
-  └── id_pedido (FK → pedidos.ID_PEDIDO) ◀┘
+  └── id  ───────────────────────────────────────┐
+                                                 │ ID_CLIENTE (FK)
+                                                 │
+pedidos                                          │
+  ├── ID_PEDIDO  ────────────────────────────┐   │
+  └── ID_CLIENTE (FK → clientes.id)          │  ◀┘
+                                             │ 
+pagamentos                                   │ id_pedido (FK)
+  └── id_pedido (FK → pedidos.ID_PEDIDO)    ◀┘
 ```
 
 | Relacionamento | Cardinalidade |
