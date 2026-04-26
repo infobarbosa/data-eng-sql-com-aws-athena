@@ -72,7 +72,7 @@ WITH SERDEPROPERTIES (
 )
 STORED AS INPUTFORMAT  'org.apache.hadoop.mapred.TextInputFormat'
 OUTPUTFORMAT           'org.apache.hadoop.hive.ql.io.HiveIgnoreKeyTextOutputFormat'
-LOCATION 's3://bucket-name/dataset-json-clientes/data/'
+LOCATION 's3://[O NOME DO SEU BUCKET S3]/clientes/'
 TBLPROPERTIES (
     'has_encrypted_data' = 'false',
     'compressionType'    = 'gzip'
@@ -126,7 +126,7 @@ WITH SERDEPROPERTIES (
 )
 STORED AS INPUTFORMAT  'org.apache.hadoop.mapred.TextInputFormat'
 OUTPUTFORMAT           'org.apache.hadoop.hive.ql.io.HiveIgnoreKeyTextOutputFormat'
-LOCATION 's3://bucket-name/datasets-csv-pedidos/data/pedidos/'
+LOCATION 's3://[O NOME DO SEU BUCKET S3]/pedidos/'
 TBLPROPERTIES (
     'has_encrypted_data' = 'false',
     'compressionType'    = 'gzip',
@@ -183,7 +183,7 @@ WITH SERDEPROPERTIES (
 )
 STORED AS INPUTFORMAT  'org.apache.hadoop.mapred.TextInputFormat'
 OUTPUTFORMAT           'org.apache.hadoop.hive.ql.io.HiveIgnoreKeyTextOutputFormat'
-LOCATION 's3://bucket-name/dataset-json-pagamentos/data/pagamentos/'
+LOCATION 's3://[O NOME DO SEU BUCKET S3]/pagamentos/'
 TBLPROPERTIES (
     'has_encrypted_data' = 'false',
     'compressionType'    = 'gzip'
