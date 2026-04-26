@@ -162,23 +162,17 @@ WHERE VALOR_UNITARIO BETWEEN 100.00 AND 500.00;
 ### 3.6 Filtro sobre Texto com LIKE
 
 ```sql
--- Produtos cujo nome começa com "Notebook"
-SELECT
-    ID_PEDIDO,
-    PRODUTO,
-    VALOR_UNITARIO
-FROM db_analytics.pedidos
-WHERE PRODUTO LIKE 'Notebook%';
+-- Clientes cujo nome começa com "Marcelo"
+SELECT id, nome, data_nasc
+FROM db_analytics.clientes
+WHERE nome like 'Marcelo%'
 ```
 
 ```sql
--- Produtos que contêm a palavra "Pro" em qualquer posição
-SELECT
-    ID_PEDIDO,
-    PRODUTO,
-    VALOR_UNITARIO
-FROM db_analytics.pedidos
-WHERE PRODUTO LIKE '%Pro%';
+-- Clientes cujo nome contém "Barbosa"
+SELECT id, nome, data_nasc
+FROM db_analytics.clientes
+WHERE nome like '%Barbosa%'
 ```
 
 ### 3.7 Filtro sobre Datas
@@ -193,7 +187,7 @@ SELECT
     DATA_CRIACAO,
     UF
 FROM db_analytics.pedidos
-WHERE DATE(DATA_CRIACAO) >= DATE('2025-03-01');
+WHERE DATA_CRIACAO >= DATE('2025-03-01');
 ```
 
 ```sql
@@ -203,7 +197,7 @@ SELECT
     PRODUTO,
     DATA_CRIACAO
 FROM db_analytics.pedidos
-WHERE DATE(DATA_CRIACAO) BETWEEN DATE('2025-01-01') AND DATE('2025-01-31');
+WHERE DATA_CRIACAO BETWEEN DATE('2025-01-01') AND DATE('2025-01-31');
 ```
 
 ### 3.8 Filtro sobre Booleanos (tabela pagamentos)
