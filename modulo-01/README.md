@@ -62,11 +62,18 @@ A compactação com `gzip` reduz o volume de dados armazenados e escaneados pelo
 
 ### 3.3. Disponibilização dos datasets
 
-1. Crie um bucket S3:
+1. Crie os buckets S3:
 ```sh
 bucket_name=s3://data-eng-$(date +%Y-%m-%d-%H-%M)
 echo $bucket_name 
+
 aws s3 mb $bucket_name
+
+athena_output_location=s3://data-eng-$(date +%Y-%m-%d-%H-%M)/output
+echo $athena_output_location
+aws s3 mb $athena_output_location
+aws athena update-work-group --work-group "primary" --configuration-updates "ResultConfigurationUpdates={OutputLocation=$athena_output_location}"
+
 
 ```
 
