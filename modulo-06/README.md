@@ -42,10 +42,8 @@ A lógica do Pivot com `CASE WHEN` consiste em criar uma coluna para cada valor 
 -- Faturamento mensal por forma de pagamento (colunas por mês)
 SELECT
     MONTH(DATE(pg.data_processamento))                              AS mes,
-    SUM(CASE WHEN pg.forma_pagamento = 'CREDITO'
+    SUM(CASE WHEN pg.forma_pagamento = 'CARTAO_CREDITO'
              THEN pg.valor_pagamento ELSE 0 END)                   AS credito,
-    SUM(CASE WHEN pg.forma_pagamento = 'DEBITO'
-             THEN pg.valor_pagamento ELSE 0 END)                   AS debito,
     SUM(CASE WHEN pg.forma_pagamento = 'PIX'
              THEN pg.valor_pagamento ELSE 0 END)                   AS pix,
     SUM(CASE WHEN pg.forma_pagamento = 'BOLETO'
